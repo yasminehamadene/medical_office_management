@@ -1,0 +1,16 @@
+server:
+  port: 8081
+
+resilience4j:
+  circuitbreaker:
+    instances:
+      rendezVousService:
+        slidingWindowSize: 10
+        failureRateThreshold: 50
+        waitDurationInOpenState: 5000
+        permittedNumberOfCallsInHalfOpenState: 3
+  retry:
+    instances:
+      calendarApi:
+        maxAttempts: 3
+        waitDuration: 1000 
